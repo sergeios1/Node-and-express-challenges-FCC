@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express'); 
 var app = express();
 
 
@@ -10,7 +10,7 @@ app.get("/",function(a,b){
 });
 
 
-app.use(express.static(__dirname +  "/public"));
+app.use(express.static("assets",__dirname +  "/public"));
 
 
  module.exports = app;
