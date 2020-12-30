@@ -1,15 +1,13 @@
 var express = require('express'); 
 var app = express();
-app.use(express.static(__dirname + "/public"));
-app.use(express.static("/assets",__dirname + "/public"));
-
 
 console.log("Hello World");
 
 app.get("/",function(a,b){
-    b.send("Hello Express");
-    res.sendFile(__dirname+/views/index.html);
+    b.sendFile(__dirname + "/views/index.html");
 });
+
+app.use(express.static(__dirname + "/public"));
 
 
  module.exports = app;
