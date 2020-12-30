@@ -4,6 +4,8 @@ var app = express();
 
 console.log("Hello World");
 
+app.get("/",(a,b) => b.send("Hello Express"))
+
 
 
 
