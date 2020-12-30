@@ -4,19 +4,10 @@ var app = express();
 
 console.log("Hello World");
 
-app.get("/",(a,b) => b.send("Hello Express"))
-
-
-
-
-
-
-
-
-
-
-
-
+app.get("/",function(a,b){
+    b.send("Hello Express");
+    res.sendFile(__dirname+/views/index.html);
+});
 
 
 
