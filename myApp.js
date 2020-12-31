@@ -10,6 +10,8 @@ app.get("/",function(a,b){
 app.use(express.static(__dirname + "/public"));
 
 
+app.get("/Json",res.json({"message": "Hello json"}));
+
+
  module.exports = app;
 
- 
