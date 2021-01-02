@@ -11,7 +11,7 @@ app.use(express.static(__dirname + "/public"));
 
 let response = "Hello json";
 
-if(process.env.MESSAGE_STYLE === "HELLO JSON"){
+if(process.env.MESSAGE_STYLE == "HELLO JSON"){
     response = "HELLO JSON";
 }
 else{
