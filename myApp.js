@@ -12,7 +12,7 @@ app.use(express.static(__dirname + "/public"));
 
 let response = "Hello json".toUpperCase();
 
-if(process.env.MESSAGE_STYLE == "HELLO JSON"){
+if(process.env.MESSAGE_STYLE == "uppecase"){
     response = "HELLO JSON";
 }
 else{
