@@ -9,7 +9,7 @@ app.get("/",function(a,b){
 
 app.use(express.static(__dirname + "/public"));
 
-let response = "Hello json";
+let response = "Hello json".toUpperCase();
 
 if(process.env.MESSAGE_STYLE == "HELLO JSON"){
     response = "HELLO JSON";
