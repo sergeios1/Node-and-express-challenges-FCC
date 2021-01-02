@@ -14,14 +14,12 @@ let response = "Hello json";
 if(process.env.MESSAGE_STYLE === "HELLO JSON"){
     response = response.toUpperCase();
 }
-
-
+else{
+    response = "Hello json";
+}
 
 app.get("/json",(req,res) => {
     res.json({"message": response});
 });
 
-
-
 module.exports = app;
-
