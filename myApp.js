@@ -1,26 +1,30 @@
 var express = require('express'); 
 var app = express();
-require('dotenv').config();
+
+const port = 3000;
+app.use((req, res, next) => {
+    console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
+})
 
 console.log("Hello World");
-
 app.get("/",function(a,b){
     b.sendFile(__dirname + "/views/index.html");
 });
 
 app.use(express.static(__dirname + "/public"));
 
-let response = "Hello json".toUpperCase();
-
-if(process.env.MESSAGE_STYLE == "uppecase"){
-    response = "HELLO JSON";
-}
-else{
-    response = "Hello json";
-}
 
 app.get("/json",(req,res) => {
-    res.json({"message": response});
+  if(process.env.MESSAGE_STYLE === "uppercase"){
+    res.json({"message": "HELLO JSON"});
+  }
+  else{
+    res.json({"message": "Hello json"});
+  }
 });
+
+
+app.listen(port, ()=>console.log("listening on port" + port));
 
 module.exports = app;
