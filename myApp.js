@@ -14,7 +14,6 @@ app.get("/",function(a,b){
 
 app.use(express.static(__dirname + "/public"));
 
-
 app.get("/json",(req,res) => {
   if(process.env.MESSAGE_STYLE === "uppercase"){
     res.json({"message": "HELLO JSON"});
@@ -23,6 +22,13 @@ app.get("/json",(req,res) => {
     res.json({"message": "Hello json"});
   }
 });
+
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+}, (req, res, next) => {
+  res.send({"time": req.time});
+})
 
 
 app.listen(port, ()=>console.log("listening on port" + port));
