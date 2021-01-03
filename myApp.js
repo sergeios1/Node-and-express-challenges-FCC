@@ -2,10 +2,6 @@ var express = require('express');
 var app = express();
 
 const port = 3000;
-app.use((req, res, next) => {
-    console.log(req.method + " " + req.path + " - " + req.ip);
-    next();
-})
 
 console.log("Hello World");
 app.get("/",function(a,b){
