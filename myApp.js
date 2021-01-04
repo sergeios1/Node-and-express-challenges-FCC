@@ -36,6 +36,11 @@ app.get('/:word/echo', (req, res) => {
 })
 
 
+app.get('/name', (req, res) => {
+  res.json(req.query);
+})
+
+
 app.listen(port, ()=>console.log("listening on port" + port));
 
 module.exports = app;
