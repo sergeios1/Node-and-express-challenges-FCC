@@ -1,5 +1,6 @@
 var express = require('express'); 
 var app = express();
+let bodyParser = require('body-parser');
 
 const port = 3000;
 app.use((req, res, next) => {
@@ -7,13 +8,14 @@ app.use((req, res, next) => {
     next();
 })
 
+app.use(bodyParser.urlencoded({extended: false}));
+
 console.log("Hello World");
 app.get("/",function(a,b){
     b.sendFile(__dirname + "/views/index.html");
 });
 
 app.use(express.static(__dirname + "/public"));
-
 app.get("/json",(req,res) => {
   if(process.env.MESSAGE_STYLE === "uppercase"){
     res.json({"message": "HELLO JSON"});
@@ -30,17 +32,14 @@ app.get('/now', (req, res, next) => {
   res.json({"time": req.time});
 })
 
-
 app.get('/:word/echo', (req, res) => {
   res.json({"echo": req.params.word});
 })
-
 
 app.get('/name', (req, res) => {
   let response = req.query.first + " "+ req.query.last;
   res.json({"name":response});
 })
-
 
 app.listen(port, ()=>console.log("listening on port" + port));
 
