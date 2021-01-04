@@ -1,6 +1,6 @@
 var express = require('express'); 
 var app = express();
-let bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 const port = 3000;
 app.use((req, res, next) => {
@@ -40,6 +40,13 @@ app.get('/name', (req, res) => {
   let response = req.query.first + " "+ req.query.last;
   res.json({"name":response});
 })
+
+app.post('/name', bodyParser.urlencoded({extended: false}), 
+      (req, res) => {
+        let response = req.body.first + " "+ req.body.last;
+        res.json({"name":response});
+      })
+
 
 app.listen(port, ()=>console.log("listening on port" + port));
 
